@@ -1,0 +1,9 @@
+deploy:
+  provider: gae
+  keyfile: node-gcm-for-ws-940512693898.json
+  default: true
+  project: node-gcm-for-ws
+before_install:
+- openssl aes-256-cbc -K $encrypted_b1bff780d79a_key -iv $encrypted_b1bff780d79a_iv
+  -in node-gcm-for-ws-940512693898.json.enc -out node-gcm-for-ws-940512693898.json
+  -d
