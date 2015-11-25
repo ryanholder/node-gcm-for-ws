@@ -2,6 +2,8 @@
 
 var express = require('express');
 var gcm = require('node-gcm');
+var config = require('../config');
+
 var router = express.Router();
 
 router.all('/*', function(req, res, next) {
@@ -50,7 +52,7 @@ router.post('/:token', function (req, res) {
   var regTokens = [req.params.token];
 
   // Set up the sender with you API key
-  var sender = new gcm.Sender('');
+  var sender = new gcm.Sender(config.gcm_server_key);
 
   sender.send(message, { registrationIds: regTokens }, function (err, result) {
     if (err) {
