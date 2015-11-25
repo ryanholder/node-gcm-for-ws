@@ -26,6 +26,7 @@ router.param('token', function(req, res, next, token) {
   }
 });
 
+
 // POST method route
 router.post('/:token', function (req, res) {
   if (!req.body) return res.sendStatus(400);
