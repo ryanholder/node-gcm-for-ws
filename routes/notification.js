@@ -31,6 +31,8 @@ router.param('token', function(req, res, next, token) {
 router.post('/:token', function (req, res) {
   if (!req.body) return res.sendStatus(400);
 
+  console.log(req);
+
   var message = new gcm.Message({
     collapseKey: 'demo',
     priority: 'high',
@@ -40,12 +42,13 @@ router.post('/:token', function (req, res) {
     // restrictedPackageName: 'occddjchaiphpammejlkfmppjpkcjdhb',
     // dryRun: true,
     data: {
-      order: req.body.order
-    },
-    notification: {
-      title: "Hello, World",
-      icon: "ic_launcher",
-      body: "This is a notification that will be displayed ASAP."
+      order: req.body.order,
+      webhook_topic: req.headers.x-wc-webhook-topic,
+      webhook_resource: req.headers.x-wc-webhook-resource,
+      webhook_event: req.headers.x-wc-webhook-event,
+      webhook_signature: req.headers.x-wc-webhook-signature,
+      webhook_id: req.headers.x-wc-webhook-id,
+      webhook_delivery_id: req.headers.x-wc-delivery-id
     }
   });
 
