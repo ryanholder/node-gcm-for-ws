@@ -43,12 +43,12 @@ router.post('/:token', function (req, res) {
     // dryRun: true,
     data: {
       order: req.body.order,
-      webhook_topic: req.headers.x-wc-webhook-topic,
-      webhook_resource: req.headers.x-wc-webhook-resource,
-      webhook_event: req.headers.x-wc-webhook-event,
-      webhook_signature: req.headers.x-wc-webhook-signature,
-      webhook_id: req.headers.x-wc-webhook-id,
-      webhook_delivery_id: req.headers.x-wc-delivery-id
+      webhook_topic: req.headers['x-wc-webhook-topic'],
+      webhook_resource: req.headers['x-wc-webhook-resource'],
+      webhook_event: req.headers['x-wc-webhook-event'],
+      webhook_signature: req.headers['x-wc-webhook-signature'],
+      webhook_id: req.headers['x-wc-webhook-id'],
+      webhook_delivery_id: req.headers['x-wc-webhook-delivery-id']
     }
   });
 
